@@ -11,7 +11,7 @@ mu.wind <- (sigma.wind)*((gamma(3/kappa.wind))/(gamma(2/kappa.wind)))
 
 x <- seq(0,1000)
 wind.pdf <- dpe(x=x,mu=mu.wind, sigma=sigma.wind, kappa=kappa.wind,log = TRUE)
-plot(trial1.pdf,log='x')
+plot(wind.pdf,log='x')
 
 # Dispersal kernel for animal dispersed seeds ####
 
@@ -20,8 +20,8 @@ kappa.animal <- 0.1339
 mu.animal <- (sigma.animal)*((gamma(3/kappa.animal))/(gamma(2/kappa.animal)))
 
 x <- seq(0,1000)
-trial2.pdf <- dpe(x=x,mu=mu.animal, sigma=sigma.animal, kappa=kappa.animal,log = TRUE)
-plot(trial2.pdf,log='x')
+animal.pdf <- dpe(x=x,mu=mu.animal, sigma=sigma.animal, kappa=kappa.animal,log = TRUE)
+plot(animal.pdf,log='x')
 
 # Simulating dispersal distances from the wind kernel ####
 n <- 10000
@@ -76,3 +76,6 @@ for (j in 1:length(p.wind)){
 	}
 	hist(mix.sims.out)
 }
+
+# Testing for differences among data sets ####
+shapiro.test(mix.sims.out)
